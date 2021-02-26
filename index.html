@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Vue</title>
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1>Timer</h1>
+    </header>
+
+    <div class="timer">
+      <span>
+        Seconds: {{ seconds }}
+      </span>
+  
+      <div class="btn-group">
+        <button class="timer-btn" @click="handleTimer">{{ displayText() }} Timer</button>
+        <button 
+          class="timer-btn btn-red" 
+          @click="restart"
+        >
+          Restart
+        </button>
+        <button 
+          class="timer-btn btn-blue" 
+          @click="addLap(seconds)"
+          v-bind:disabled="disabled"
+        >
+          Add a Lap
+        </button>
+      </div>
+    </div>
+
+    <div class="lapse-container">
+      <div class="lapse" v-for="lap in lapse" @dblclick="deleteLap(lap)">
+        <span class="badge">{{ lap.count }}</span>
+        <span>At Second: {{ lap.second }}</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
