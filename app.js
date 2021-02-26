@@ -45,6 +45,7 @@ const Timer = {
         this.status = "stopped"
         this.disabled = true
         this.lapse = []
+        this.count = 0
         clearInterval(this.interval)
       }
       confirmation && restartTimer()
